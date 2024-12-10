@@ -1,12 +1,21 @@
-# Forum MVC
+# Application MVC Forum
 
 ## 📋 Contexte du projet
-Dans le cadre de votre formation en développement web, vous devez créer une application simple pour aborder l'authentification afin de gérer l'inscription, la connexion et la déconnexion d'un utilisateur.
+Dans le cadre de votre formation en développement web, vous devez créer une application de gestion des données en respectant une architecture MVC. Ce projet permet de mettre en pratique l'interaction entre le frontend et le backend, ainsi que la communication avec une base de donnée.
 
 ## 🎯 Objectifs pédagogiques
 ### Consignes
-À compléter
+- Structurer les données en réalisant un MCD 
+- Créer et remplir une base de donnée en conséquence
+- Écrire diverses requêtes SQL pour s'assurer de la cohérence de la base de donnée
+- Réaliser un mockup et des wireframes de l'application pour les vues principales
+- Concevoir l'application web en PHP en respectant une architecture Modèles/Vues/Controlleurs
 
+### Critères de performance
+- Code structuré selon le pattern MVC
+- Validation des données côté client ET serveur
+- Sécurisation des requêtes SQL (requêtes préparées)
+- Code commenté et indenté
 
 ## 🔧 Technologies utilisées
 ### Languages
@@ -16,48 +25,86 @@ Dans le cadre de votre formation en développement web, vous devez créer une ap
 - PHP
 - SQL
 
-## 💡 Concepts clés abordés
-À compléter
+### Outils
+- Looping
+- Figma
+- Visual Studio Code
+- Laragon
+- Git/GitHub
+- HeidiSQL
 
+## 💡 Concepts clés abordés
+- **HTML/CSS**
+  - Sémantique HTML
+  - Animations & Transitions
+  - Responsive Design
+  
+- **JavaScript**
+  - Manipulation du DOM
+  - Événements
+  - Fetch API
+  - Gestion des formulaires
+  
+- **PHP**
+  - POO
+  - PDO et requêtes préparées
+  - Sessions
+  - Architecture MVC
+  - Server Side Rendering
+  - Injection des données dans le HTML
+  - Création d'une API
+  
+- **SQL**
+  - CRUD
+  - Jointures
+  - Views
+  - Clés étrangères
+  - Empêcher les Injections SQL
+  - Pré-formattage des données
 
 ## 📦 Installation et configuration
 ```bash
 # Cloner le repository
-git clone https://github.com/LouisHyt/PHP-Authentication
-cd PHP-Authentication
+git clone https://github.com/LouisHyt/Cinema-MVC.git
+cd Cinema-MVC
 
 # Configuration de la base de données
 1. Démarrer Laragon (Apache et MySQL)
 2. Accéder à HeidiSQL
-3. Créer une nouvelle base de données 'php-authentication'
-4. Ajouter une table user avec les champs 'id', 'username', 'email' et 'password'
+3. Créer une nouvelle base de données 'cinema'
+4. Importer le fichier sql/bdd_cinema.sql
 
 # Configuration du projet
-1. Modifier les informations de connexion dans utils/Connect.php:
+1. Modifier les informations de connexion dans model/connect.php:
    
 ```
 
 ## 🚀 Structure du projet
 ```
-PHP-Authentication/
-├── assets/
-│   └── css/                   
-├── auth/                  
-├── utils/                        
-├── dashboard.php                
-├── index.php                
-├── login.php               
-├── navbar.php                                              
-└── register.php                 
+Cinema-MVC/
+├── app/                  # Dossier principal de l'application
+│   ├── controller/       # Contrôleurs de l'application
+│   ├── model/            # Modèles de données
+│   ├── view/             # Vues de l'application
+│   ├── services/         # Services utilitaires
+│   ├── public/           # Ressources publiques (CSS, JS, images)
+│   └── index.php         # Point d'entrée de l'application
+├── figma/                # Maquettes et designs Figma
+├── mcd/                  # Modèle Conceptuel et logique des données
+└── sql/                  # Scripts d'importation & autre
 ```
 
 ## ✨ Démonstration
-À compléter
+
 
 ## 🏆 Compétences visées
-À compléter
+- Développer une application web complète
+- Mettre en place une architecture MVC
+- Gérer les interactions utilisateur
+- Manipuler une base de données
+- Sécuriser une application web
 
 ---
 Exercice réalisé dans le cadre de la formation Développeur Web Full Stack au sein d'Elan Formation
-- 📅 Date : Décembre 2024
+- 📅 Date : Novembre/Décembre 2024
 - ✍️ Auteur : Louis Hayotte
