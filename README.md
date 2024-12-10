@@ -1,21 +1,21 @@
 # Application MVC Forum
 
 ## 📋 Contexte du projet
-Dans le cadre de votre formation en développement web, vous devez créer une application de gestion des données en respectant une architecture MVC. Ce projet permet de mettre en pratique l'interaction entre le frontend et le backend, ainsi que la communication avec une base de donnée.
+Dans le cadre de votre formation en développement web, vous devez créer une application type forum en respectant une architecture MVC et en utilisant le framework fourni. Ce projet permet de mettre en pratique l'interaction entre le frontend et le backend, l'authentification, ainsi que la communication avec une base de donnée.
 
 ## 🎯 Objectifs pédagogiques
 ### Consignes
-- Structurer les données en réalisant un MCD 
+- Structurer les données en réalisant un MCD et un MLD
 - Créer et remplir une base de donnée en conséquence
-- Écrire diverses requêtes SQL pour s'assurer de la cohérence de la base de donnée
 - Réaliser un mockup et des wireframes de l'application pour les vues principales
-- Concevoir l'application web en PHP en respectant une architecture Modèles/Vues/Controlleurs
+- Concevoir l'application web en PHP en respectant une architecture Modèles/Vues/Controlleurs et en se basant sur le framework fourni
 
 ### Critères de performance
 - Code structuré selon le pattern MVC
 - Validation des données côté client ET serveur
 - Sécurisation des requêtes SQL (requêtes préparées)
 - Code commenté et indenté
+- Gestion de l'authentification et des permissions
 
 ## 🔧 Technologies utilisées
 ### Languages
@@ -36,23 +36,18 @@ Dans le cadre de votre formation en développement web, vous devez créer une ap
 ## 💡 Concepts clés abordés
 - **HTML/CSS**
   - Sémantique HTML
-  - Animations & Transitions
-  - Responsive Design
-  
-- **JavaScript**
-  - Manipulation du DOM
-  - Événements
-  - Fetch API
   - Gestion des formulaires
+  - Responsive Design
   
 - **PHP**
   - POO
   - PDO et requêtes préparées
   - Sessions
   - Architecture MVC
+  - Authentification
   - Server Side Rendering
   - Injection des données dans le HTML
-  - Création d'une API
+  - Hashage des mots de passes
   
 - **SQL**
   - CRUD
@@ -65,14 +60,14 @@ Dans le cadre de votre formation en développement web, vous devez créer une ap
 ## 📦 Installation et configuration
 ```bash
 # Cloner le repository
-git clone https://github.com/LouisHyt/Cinema-MVC.git
-cd Cinema-MVC
+git clone https://github.com/LouisHyt/Forum-MVC.git
+cd Forum-MVC/php
 
 # Configuration de la base de données
 1. Démarrer Laragon (Apache et MySQL)
 2. Accéder à HeidiSQL
-3. Créer une nouvelle base de données 'cinema'
-4. Importer le fichier sql/bdd_cinema.sql
+3. Créer une nouvelle base de données 'exo_forum'
+4. Importer le fichier sql/bdd_forum.sql
 
 # Configuration du projet
 1. Modifier les informations de connexion dans model/connect.php:
@@ -105,10 +100,12 @@ Cinema-MVC/
 - Développer une application web complète
 - Mettre en place une architecture MVC
 - Gérer les interactions utilisateur
+- Sécuriser et vérifier les données stockées
+- Gérer l'authentification et les permissions utilisateurs
 - Manipuler une base de données
 - Sécuriser une application web
 
 ---
 Exercice réalisé dans le cadre de la formation Développeur Web Full Stack au sein d'Elan Formation
-- 📅 Date : Novembre/Décembre 2024
+- 📅 Date : Décembre 2024
 - ✍️ Auteur : Louis Hayotte
