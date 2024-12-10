@@ -95,6 +95,10 @@ Cinema-MVC/
 ```
 
 ## ✨ Démonstration
+### MCD & MLD
+- Modèle Relationnel des données : ![Schéma Looping du model relationnel des données](/MCD-MLD/mcd.jpg)
+  
+- Modèle Logique des données : ![Schéma Looping du model Logique des données](/MCD-MLD/mld.jpg)
 
 
 ## 🏆 Compétences visées
