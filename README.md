@@ -67,7 +67,7 @@ cd Forum-MVC/php
 1. Démarrer Laragon (Apache et MySQL)
 2. Accéder à HeidiSQL
 3. Créer une nouvelle base de données 'exo_forum'
-4. Importer le fichier sql/bdd_forum.sql
+4. Importer le fichier sql/import_database.sql
 
 # Configuration du projet
 1. Modifier les informations de connexion dans model/connect.php:
