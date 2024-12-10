@@ -11,10 +11,10 @@ final class Topic extends Entity{
 
     private $id;
     private $title;
+    private $content;
     private $user;
     private $category;
-    private $creationDate;
-    private $closed;
+    private $isLocked;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -55,6 +55,23 @@ final class Topic extends Entity{
     }
 
     /**
+     * Get the value of title
+     */ 
+    public function getIsLocked(){
+        return $this->isLocked;
+    }
+
+    /**
+     * Set the value of title
+     *
+     * @return  self
+     */ 
+    public function setIsLocked($isLocked){
+        $this->isLocked = $isLocked;
+        return $this;
+    }
+
+    /**
      * Get the value of user
      */ 
     public function getUser(){
@@ -73,5 +90,25 @@ final class Topic extends Entity{
 
     public function __toString(){
         return $this->title;
+    }
+
+    /**
+     * Get the value of content
+     */ 
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set the value of content
+     *
+     * @return  self
+     */ 
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
     }
 }

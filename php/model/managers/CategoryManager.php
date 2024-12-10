@@ -2,7 +2,7 @@
 namespace Model\Managers;
 
 use App\Manager;
-use App\DAO;
+use APP\DAO;
 
 class CategoryManager extends Manager{
 
