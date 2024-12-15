@@ -74,13 +74,14 @@ body{
         font-weight: 600;
     }
 
-    a {
+    & > #nav-right > a {
         transition: color 200ms;
 
         &:hover{
             color: var(--accent-color);
         }
     }
+
 }
 
 #mainpage{
