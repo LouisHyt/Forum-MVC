@@ -15,11 +15,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Listage de la structure de la base pour exo_forum
-CREATE DATABASE IF NOT EXISTS `exo_forum` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `exo_forum`;
+-- Listage de la structure de la base pour exo_forum_louis
+CREATE DATABASE IF NOT EXISTS `exo_forum_louis` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `exo_forum_louis`;
 
--- Listage de la structure de table exo_forum. category
+-- Listage de la structure de table exo_forum_louis. category
 CREATE TABLE IF NOT EXISTS `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '',
@@ -28,11 +28,17 @@ CREATE TABLE IF NOT EXISTS `category` (
   `color` varchar(10) DEFAULT '#8E8E8E',
   PRIMARY KEY (`id_category`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table exo_forum.category : ~0 rows (environ)
+-- Listage des données de la table exo_forum_louis.category : ~4 rows (environ)
+INSERT INTO `category` (`id_category`, `name`, `createdAt`, `updatedAt`, `color`) VALUES
+	(1, 'javascript', '2024-12-10 16:06:56', '2024-12-10 16:07:11', '#E75E65'),
+	(2, 'php', '2024-12-10 16:07:19', '2024-12-10 16:07:24', '#5E9EE7'),
+	(3, 'sql', '2024-12-10 16:07:39', '2024-12-10 16:07:39', '#35A446'),
+	(4, 'ai', '2024-12-10 16:08:00', '2024-12-10 16:08:21', '#E75ECE'),
+	(5, 'jquery', '2024-12-10 16:08:17', '2024-12-10 16:08:17', '#E75E65');
 
--- Listage de la structure de table exo_forum. post
+-- Listage de la structure de table exo_forum_louis. post
 CREATE TABLE IF NOT EXISTS `post` (
   `id_post` int NOT NULL AUTO_INCREMENT,
   `content` text NOT NULL,
@@ -47,9 +53,9 @@ CREATE TABLE IF NOT EXISTS `post` (
   CONSTRAINT `FK__user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table exo_forum.post : ~0 rows (environ)
+-- Listage des données de la table exo_forum_louis.post : ~0 rows (environ)
 
--- Listage de la structure de table exo_forum. topic
+-- Listage de la structure de table exo_forum_louis. topic
 CREATE TABLE IF NOT EXISTS `topic` (
   `id_topic` int NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
@@ -66,9 +72,9 @@ CREATE TABLE IF NOT EXISTS `topic` (
   CONSTRAINT `FK_topic_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table exo_forum.topic : ~0 rows (environ)
+-- Listage des données de la table exo_forum_louis.topic : ~0 rows (environ)
 
--- Listage de la structure de table exo_forum. user
+-- Listage de la structure de table exo_forum_louis. user
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL DEFAULT '',
@@ -83,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table exo_forum.user : ~0 rows (environ)
+-- Listage des données de la table exo_forum_louis.user : ~0 rows (environ)
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
