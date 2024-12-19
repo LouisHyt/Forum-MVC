@@ -13,7 +13,7 @@ namespace App;
 abstract class DAO{
 
     private static $host   = 'mysql:host=127.0.0.1;port=3306';
-    private static $dbname = 'exo_forum';
+    private static $dbname = 'exo_forum_louis';
     private static $dbuser = 'root';
     private static $dbpass = '';
 

@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 @layer reset {
-    :where(*, *::before, *::after) {
+    :is(*, *::before, *::after) {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -25,6 +23,8 @@
 :root{
     --accent-color: #4F9AE1;
     --accent-color-secondary: #4FD071;
+    --flash-success: rgb(87, 192, 87);
+    --flash-error: rgb(219, 86, 86);
 }
 
 body{
@@ -85,7 +85,22 @@ body{
 }
 
 #mainpage{
-    padding: 2rem;
+    padding: 3rem;
+}
+
+.flash-message{
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: white;
+
+    &.success{
+        color: var(--flash-success);
+    }
+
+    &.error{
+        color: var(--flash-error);
+    }
 }
 
 
