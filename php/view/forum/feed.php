@@ -47,28 +47,6 @@
                     <?php endforeach ?>
                 </select>
             </div>
-            <div class="section">
-                <p>Search by tags</p>
-                <form action="">
-                    <div class="tag-item">
-                        <label for="php">php</label>
-                        <input type="checkbox" name="php" id="php">
-                    </div>
-                    <div class="tag-item">
-                        <label for="sql">sql</label>
-                        <input type="checkbox" name="sql" id="sql">
-                    </div>
-                    <div class="tag-item">
-                        <label for="javascript">Javascript</label>
-                        <input type="checkbox" name="javascript" id="javascript">
-                    </div>
-                    <div class="tag-item">
-                        <label for="ai">AI</label>
-                        <input type="checkbox" name="ai" id="ai">
-                    </div>
-                    
-                </form>
-            </div>
         </aside>
         
     
