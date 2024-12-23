@@ -91,7 +91,7 @@ class SecurityController extends AbstractController {
             try {
                 $user = $userManager->verifyCredentials($username, $password);
                 Session::setUser($user);
-                $this->redirectTo("home", "index");
+                $this->redirectTo("forum", "index");
             } catch (Exception $e) {
                 Session::addFlash("error", $e->getMessage());
                 $this->redirectTo("security", "login");
@@ -108,6 +108,6 @@ class SecurityController extends AbstractController {
     }
     public function logout () {
         Session::setUser(null);
-        $this->redirectTo("forum", "index");
+        $this->redirectTo("home", "index");
     }
 }

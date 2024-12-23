@@ -15,6 +15,8 @@ final class Topic extends Entity{
     private $user;
     private $category;
     private $isLocked;
+    private $timeDiff;
+    private $postCount;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -34,6 +36,23 @@ final class Topic extends Entity{
      */ 
     public function setId($id){
         $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * Get the time difference
+     */ 
+    public function getTimeDiff(){
+        return $this->timeDiff;
+    }
+
+    /**
+     * Set the value of title
+     *
+     * @return  self
+     */ 
+    public function setTimeDiff($timeDiff){
+        $this->timeDiff = $timeDiff;
         return $this;
     }
 
@@ -108,6 +127,46 @@ final class Topic extends Entity{
     public function setContent($content)
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of category
+     */ 
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set the value of category
+     *
+     * @return  self
+     */ 
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of postCount
+     */ 
+    public function getPostCount()
+    {
+        return $this->postCount;
+    }
+
+    /**
+     * Set the value of postCount
+     *
+     * @return  self
+     */ 
+    public function setPostCount($postCount)
+    {
+        $this->postCount = $postCount;
 
         return $this;
     }

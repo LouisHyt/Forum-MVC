@@ -10,12 +10,34 @@ use Model\Managers\TopicManager;
 class ForumController extends AbstractController implements ControllerInterface{
 
     public function index() {
-
-        // le controller communique avec la vue "listCategories" (view) pour lui envoyer la liste des catégories (data)
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->findAll(['name', 'ASC']);
+        $topicManager = new TopicManager();
+        $topics = $topicManager->findAllTopics(['createdAt', 'DESC']);
         return [
             "view" => VIEW_DIR."forum/feed.php",
             "meta_description" => "List all latest topics of the forum",
-            "title" => "DevForum - Feed"
+            "title" => "DevForum - Feed",
+            "data" => [ 
+                "topics" => $topics,
+                "categories" => $categories 
+            ]
+        ];
+    }
+
+    public function showByCategory(int $id){
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->findAll(['name', 'ASC']);
+        $topicManager = new TopicManager();
+        $topics = $topicManager->findTopicsByCategory($id, ['createdAt', 'DESC']);
+        return [
+            "view" => VIEW_DIR."forum/feed.php",
+            "meta_description" => "List all latest topics of the forum",
+            "title" => "DevForum - Feed",
+            "data" => [ 
+                "topics" => $topics,
+                "categories" => $categories 
+            ]
         ];
     }
 }
