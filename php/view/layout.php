@@ -8,7 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
         <script src="<?= PUBLIC_DIR ?>/js/script.js" defer></script>
         <title><?= $title ?></title>
@@ -27,16 +27,22 @@
                         // si l'utilisateur est connecté 
                         if(App\Session::getUser()){
                             ?>
-                            <a href="index.php?ctrl=security&action=profile">
-                                <span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser() ?>
+                            <a href="?ctrl=security&action=profile">
+                                <span class="fas fa-user"></span>
+                                <span><?= App\Session::getUser() ?></span>
                             </a>
-                            <a href="index.php?ctrl=security&action=logout">Logout</a>
+                            <a href="?ctrl=security&action=logout">
+                                <span>
+                                    Logout
+                                </span>
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                            </a>
                             <?php
                         }
                         else{
                             ?>
-                            <a href="index.php?ctrl=security&action=login">Login</a>
-                            <a href="index.php?ctrl=security&action=register">Register</a>
+                            <a href="?ctrl=security&action=login">Login</a>
+                            <a href="?ctrl=security&action=register">Register</a>
                         <?php
                         }
                     ?>

@@ -25,6 +25,8 @@
     --accent-color-secondary: #4FD071;
     --flash-success: rgb(87, 192, 87);
     --flash-error: rgb(219, 86, 86);
+    --text-discrete: rgb(184, 184, 184);
+    --border-color: #C2C2C2;
 }
 
 body{
@@ -36,6 +38,7 @@ body{
 #wrapper{
     display: grid;
     grid-template-rows: auto 1fr auto;
+    max-height: 100vh;
     min-height: 100vh;
 
     header{
@@ -76,6 +79,9 @@ body{
 
     & > #nav-right > a {
         transition: color 200ms;
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
 
         &:hover{
             color: var(--accent-color);
@@ -85,7 +91,8 @@ body{
 }
 
 #mainpage{
-    padding: 3rem;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .flash-message{

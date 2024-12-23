@@ -108,6 +108,6 @@ class SecurityController extends AbstractController {
     }
     public function logout () {
         Session::setUser(null);
-        $this->redirectTo("home", "index");
+        $this->redirectTo("forum", "index");
     }
 }
