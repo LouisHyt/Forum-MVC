@@ -15,6 +15,23 @@
     height: 80vh;
 }
 
+/* Dialog */
+dialog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 7px;
+
+    &::backdrop{
+        background-color: rgba(0, 0, 0, 0.587);
+    }
+
+}
+
 /* Sidebar styles */
 
 .create-topic {
@@ -117,7 +134,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        color: var( --label-clr);
+        color: var(--label-clr);
         transition: background-color 0.3s;
         font-weight: 500;
         background-color: transparent;
@@ -161,6 +178,16 @@
     padding: 20px;
     margin-bottom: 15px;
     cursor: pointer;
+
+    & .lock-topic{
+        font-size: 1.15rem;
+        color: gray;
+        transition: color 200ms;
+
+        &:hover{
+            color: rgb(37, 37, 37);
+        }
+    }
 
     & .category-badge {
         position: absolute;

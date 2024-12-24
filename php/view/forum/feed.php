@@ -1,4 +1,7 @@
 <?php
+
+use App\Session;
+
     $topics = $data["topics"] ?? null;
     $categories = $data["categories"] ?? null;
     $filterType = $_GET["type"] ?? null;
@@ -8,6 +11,22 @@
 
 <div class="forum-container">
     <div class="inner-forum">
+
+        <!-- Confirmation Dialog -->
+        <dialog id="confirmLock">
+            <form action="?ctrl=topic&action=lock" method="POST" id="lockTopicForm">
+                <div class="title">
+                    <p>Are you sure you want to lock this topic ?</p>
+                    <p>(this cannot be undone)</p>
+                </div>
+                <div class="actions">
+                    <input type="submit" name="action[]" value="confirm">
+                    <input type="submit" name="action[]" value="deny">
+                    <input class="topicId" type="hidden" name="topicId" value="">
+                </div>
+            </form>
+        </dialog>
+
         <div class="create-topic">
             <button class="create-button">
                 <i class="fa-solid fa-square-plus"></i>
@@ -59,23 +78,22 @@
             <?php if(!$topics) : ?>
                 <p>No topic Found for this category</p>
             <?php else : ?>
-                <?php foreach($topics as $topic) : ?>
-                <div class="topic-card <?= $topic->getIsLocked() ? "locked" : "" ?>">
-                <div class="category-badge">
-                        <?= $topic->getCategory()->getName() ?>
-                </div>
-                <div class="header">
+            <?php foreach($topics as $topic) : ?>
+                <div 
+                    class="topic-card <?= $topic->getIsLocked() ? "locked" : "" ?>"
+                    data-id=<?= $topic->getId() ?>
+                >
+                    <div class="category-badge">
+                            <?= $topic->getCategory()->getName() ?>
+                    </div>
+                    <div class="header">
                         <span class="author <?= !$topic->getUser() ?  "deleted": ""?>">
                             <?= $topic->getUser() ? $topic->getUser()->getUsername() : "deleted user"?>
                         </span>
                         <span class="posted-time"><?= $topic->getTimeDiff() ?> ago</span>
-                </div>
-                <p class="title"><?= $topic->getTitle() ?></p>
-                <div class="footer">
-                        <!-- <div class="tags">
-                            <span class="tag">PHP</span>
-                            <span class="tag">SQL</span>
-                        </div> -->
+                    </div>
+                    <p class="title"><?= $topic->getTitle() ?></p>
+                    <div class="footer">
                         <div class="infos">
                             <div class="status">
                                 <?php if($topic->getIsLocked()) : ?>
@@ -91,15 +109,22 @@
                                 <span class="count"><?= $topic->getPostCount() ?></span>
                             </div>
                         </div>
+                        <?php if($topic->getUser()->getId() === App\Session::getUser()->getId()) : ?>
+                                <i class="fa-solid fa-user-lock lock-topic" onclick="openLockConfirmation(this)"></i>
+                        <?php endif ?>
+                    </div>
                 </div>
-                </div>
-                <?php endforeach ?>
+            <?php endforeach ?>
             <?php endif ?>
         </section>
     </div>
 </div>
 
 <script>
+
+    const confirmLock = document.querySelector("#confirmLock");
+    const lockTopicForm = document.querySelector("#lockTopicForm");
+
     function setCategoryFilter(e){
         const id = parseInt(e.value);
         console.log(id);
@@ -109,4 +134,23 @@
             window.location.replace(`${window.location.pathname}?ctrl=forum&action=showByCategory&id=${id}`);
         }
     }
+
+    function openLockConfirmation(e){
+        const topicId = e.closest(".topic-card").dataset.id;
+        lockTopicForm.querySelector(".topicId").value = topicId;
+        confirmLock.showModal();
+    }
+
+    lockTopicForm.addEventListener("submit", e => {
+        const action = e.submitter.value
+        if(action === "deny"){
+            e.preventDefault();
+            confirmLock.close();
+        } else {
+            e.currentTarget.submit();
+        }
+    })
+
+
+
 </script>

@@ -10,6 +10,9 @@ use Model\Managers\TopicManager;
 class ForumController extends AbstractController implements ControllerInterface{
 
     public function index() {
+
+        $this->restrictAuth();
+
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll(['name', 'ASC']);
         $topicManager = new TopicManager();
@@ -26,6 +29,8 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
     public function showByType(){
+
+        $this->restrictAuth();
 
         $allowed_types = array("owner", "responses", "open", "closed");
 
@@ -56,6 +61,9 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 
     public function showByCategory(int $id){
+        
+        $this->restrictAuth();
+
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll(['name', 'ASC']);
         $topicManager = new TopicManager();

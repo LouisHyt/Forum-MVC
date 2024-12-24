@@ -101,4 +101,18 @@ class TopicManager extends Manager{
         );
 
     }
+
+    public function lockTopic(int $id){
+
+        $sql="
+        UPDATE topic 
+        SET isLocked = true
+        WHERE id_topic = :id
+        ";
+
+        return $this->getOneOrNullResult(
+            DAO::update($sql, ["id" => $id]),
+            $this->className
+        );
+    }
 }

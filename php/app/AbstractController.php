@@ -24,8 +24,15 @@ abstract class AbstractController{
         die();
     }
 
+
+    public function restrictAuth(){
+        if(!Session::getUser()){
+            $this->redirectTo("security", "login");
+        }
+        return;
+    }
+
     public function restrictTo($role){
-        
         if(!Session::getUser() || !Session::getUser()->hasRole($role)){
             $this->redirectTo("security", "login");
         }

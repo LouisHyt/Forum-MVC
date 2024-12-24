@@ -59,7 +59,8 @@ class SecurityController extends AbstractController {
             $newUser = $userManager->add([
                 "username" => $username,
                 "password" => $hashedPassword,
-                "email" => $email
+                "email" => $email,
+                "roles" => "user"
             ]);
 
             Session::addFlash("success", "Your account has been created! Please login.");
