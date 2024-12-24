@@ -1,6 +1,7 @@
 <?php
     $topics = $data["topics"] ?? null;
     $categories = $data["categories"] ?? null;
+    $filterType = $_GET["type"] ?? null;
 ?>
 
 <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/feed.css">
@@ -17,19 +18,23 @@
         
         <aside class="sidebar">
             <div class="section">
-                <a class="menu-item" href="?ctrl=forum&action=index">
+                <a class="menu-item <?= !$filterType ? "active": "" ?>" href="?ctrl=forum&action=index">
                     <i class="fas fa-list-ul"></i>
+                    <span>Feed</span>
+                </a>
+                <a class="menu-item <?= $filterType === "owner" ? "active": "" ?>" href="?ctrl=forum&action=showByType&type=owner">
+                    <i class="fa-solid fa-book"></i>
                     <span>My topics</span>
                 </a>
-                <a class="menu-item" href="?ctrl=forum&action=index&filter=responses">
+                <a class="menu-item  <?= $filterType === "responses" ? "active": "" ?>" href="?ctrl=forum&action=showByType&type=responses">
                     <i class="fas fa-reply"></i>
                     <span>My responses</span>
                 </a>
-                <a class="menu-item" href="?ctrl=forum&action=index&filter=opened">
+                <a class="menu-item  <?= $filterType === "open" ? "active": "" ?>" href="?ctrl=forum&action=showByType&type=open">
                     <i class="fas fa-lock-open"></i>
                     <span>Open topics</span>
                 </a>
-                <a class="menu-item" href="?ctrl=forum&action=index&filter=locked">
+                <a class="menu-item  <?= $filterType === "closed" ? "active": "" ?>" href="?ctrl=forum&action=showByType&type=closed">
                     <i class="fas fa-lock"></i>
                     <span>Closed topics</span>
                 </a>

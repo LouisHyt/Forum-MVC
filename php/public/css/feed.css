@@ -49,13 +49,13 @@
 }
 
 .sidebar > .section {
-    background-color: white;
     border-radius: 5px;
     border: 1px solid var(--border-color);
     margin-bottom: 20px;
     --label-clr: #666;
 
     &:not(:first-child){
+        background-color: white;
         padding: 20px;
     }
 
@@ -120,6 +120,7 @@
         color: var( --label-clr);
         transition: background-color 0.3s;
         font-weight: 500;
+        background-color: transparent;
 
         &:not(:last-child){
             border-bottom: 1px solid var(--border-color);
