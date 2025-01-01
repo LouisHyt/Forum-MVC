@@ -1,9 +1,9 @@
 <?php
-$title = "Login";
+    $title = "Login";
 ?>
 <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/forms.css">
 
-<div class="auth-form">
+<div class="container-form">
     <h1><?= $title ?></h1>
     
     <?php include('view/partials/flash.php'); ?>

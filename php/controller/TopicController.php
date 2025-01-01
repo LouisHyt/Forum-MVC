@@ -12,6 +12,14 @@ class TopicController extends AbstractController implements ControllerInterface{
         return json_encode($_POST);
     }
 
+    public function showCreate() {
+        return [
+            "view" => VIEW_DIR."topics/createTopic.php",
+            "meta_description" => "Creation page for a new topic",
+            "title" => "DevForum - Create a new topic"
+        ];
+    }
+
     public function delete() {
 
     }

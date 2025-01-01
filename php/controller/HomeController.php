@@ -5,12 +5,16 @@ use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\UserManager;
 use Model\Managers\CategoryManager;
+use App\Session;
 
 class HomeController extends AbstractController implements ControllerInterface {
 
     public function index(){
 
-        $manager = new CategoryManager();
+        if(Session::getUser()){
+            $this->redirectTo("forum", "index");
+            exit;
+        }
 
         return [
             "view" => VIEW_DIR."home.php",

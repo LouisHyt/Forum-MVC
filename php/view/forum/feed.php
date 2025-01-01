@@ -25,10 +25,10 @@
         </dialog>
 
         <div class="create-topic">
-            <button class="create-button">
+            <a class="create-button" href="?ctrl=topic&action=showCreate">
                 <i class="fa-solid fa-square-plus"></i>
                 Create a topic
-            </button>
+            </a>
         </div>
 
         
