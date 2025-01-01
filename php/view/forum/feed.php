@@ -1,7 +1,6 @@
 <?php
 
-use App\Session;
-
+    use App\Session;
     $topics = $data["topics"] ?? null;
     $categories = $data["categories"] ?? null;
     $filterType = $_GET["type"] ?? null;
@@ -14,17 +13,15 @@ use App\Session;
 
         <!-- Confirmation Dialog -->
         <dialog id="confirmLock">
-            <form action="?ctrl=topic&action=lock" method="POST" id="lockTopicForm">
-                <div class="title">
-                    <p>Are you sure you want to lock this topic ?</p>
-                    <p>(this cannot be undone)</p>
-                </div>
-                <div class="actions">
-                    <input type="submit" name="action[]" value="confirm">
-                    <input type="submit" name="action[]" value="deny">
-                    <input class="topicId" type="hidden" name="topicId" value="">
-                </div>
-            </form>
+            <div class="title">
+                <p>Are you sure you want to lock this topic ?</p>
+                <p>(this cannot be undone)</p>
+            </div>
+            <div class="actions">
+                <button class="confirm button">Confirm</button>
+                <button class="deny button">Deny</button>
+                <input id="confirmTopicId" type="hidden" name="topicId" value="">
+            </div>
         </dialog>
 
         <div class="create-topic">
@@ -109,7 +106,7 @@ use App\Session;
                                 <span class="count"><?= $topic->getPostCount() ?></span>
                             </div>
                         </div>
-                        <?php if($topic->getUser()->getId() === App\Session::getUser()->getId()) : ?>
+                        <?php if($topic->getUser()->getId() === App\Session::getUser()->getId() && !$topic->getIsLocked()) : ?>
                                 <i class="fa-solid fa-user-lock lock-topic" onclick="openLockConfirmation(this)"></i>
                         <?php endif ?>
                     </div>
@@ -123,7 +120,8 @@ use App\Session;
 <script>
 
     const confirmLock = document.querySelector("#confirmLock");
-    const lockTopicForm = document.querySelector("#lockTopicForm");
+    const lockButtons = confirmLock.querySelectorAll(".actions > .button");
+    const confirmTopicId = confirmLock.querySelector("#confirmTopicId");
 
     function setCategoryFilter(e){
         const id = parseInt(e.value);
@@ -136,21 +134,38 @@ use App\Session;
     }
 
     function openLockConfirmation(e){
-        const topicId = e.closest(".topic-card").dataset.id;
-        lockTopicForm.querySelector(".topicId").value = topicId;
+        confirmTopicId.value = e.closest(".topic-card").dataset.id;
         confirmLock.showModal();
     }
 
-    lockTopicForm.addEventListener("submit", e => {
-        const action = e.submitter.value
-        if(action === "deny"){
-            e.preventDefault();
+    for(const button of lockButtons){
+        button.addEventListener("click", e => {
+            const action = e.currentTarget.classList.contains("confirm") ? "confirm" : "deny";
+            const topicId = parseInt(confirmTopicId.value);
+            if(action === "deny"){
+                confirmLock.close();
+                return
+            }
+
+            const formData = new FormData();
+            formData.append("topicId", topicId);
+
+            fetch("?ctrl=topic&action=ajax", {
+                method: "POST",
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.error){
+                    console.error(data.error);
+                    return
+                }
+
+                window.location.reload();
+            })
+            .catch(err => console.error(err))
             confirmLock.close();
-        } else {
-            e.currentTarget.submit();
-        }
-    })
-
-
+        })
+    }
 
 </script>

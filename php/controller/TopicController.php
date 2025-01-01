@@ -9,27 +9,26 @@ class TopicController extends AbstractController implements ControllerInterface{
 
     public function index() {
 
-        var_dump("yeeeeey index");
-        die;
-
-        $this->restrictAuth();
+        return json_encode($_POST);
     }
 
     public function delete() {
 
     }
 
-    public function lock() {
-        $this->restrictAuth();
+    // API POST
+    public function ajax() {
 
-
-        var_dump($_SERVER);die;
-
-        if(isset($_POST["topicId"])){
-            $topicManager = new TopicManager();
-            $topicManager->lockTopic($_POST["topicId"]);
+        if(!isset($_POST['topicId']) || empty($_POST['topicId'])){
+            return json_encode(["error" => "missing topicId"]);
+            exit;
         }
-        header("Location: " . $_SERVER['HTTP_REFERER']);
+
+        $topicManager = new TopicManager();
+        $topicManager->lockTopic($_POST['topicId']);
+        return json_encode([
+            "success" => "Topic successfully locked"
+        ]);
     }
 
 }

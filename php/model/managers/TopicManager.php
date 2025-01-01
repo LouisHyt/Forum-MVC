@@ -110,9 +110,6 @@ class TopicManager extends Manager{
         WHERE id_topic = :id
         ";
 
-        return $this->getOneOrNullResult(
-            DAO::update($sql, ["id" => $id]),
-            $this->className
-        );
+        return DAO::update($sql, ["id" => $id]);
     }
 }
