@@ -23,29 +23,32 @@
                         </a>
                     </div>
                     <div id="nav-right">
-                    <?php
-                        // si l'utilisateur est connecté 
-                        if(App\Session::getUser()){
-                            ?>
-                            <a href="?ctrl=security&action=profile">
-                                <span class="fas fa-user"></span>
-                                <span><?= App\Session::getUser() ?></span>
+                    <?php if(App\Session::getUser()) : ?>
+                        <?php if(App\Session::isAdmin()) : ?>
+                            <a href="?ctrl=admin&action=category">
+                                <i class="fa-solid fa-table-cells-large"></i>
+                                <span>Add a category</span>
                             </a>
-                            <a href="?ctrl=security&action=logout">
-                                <span>
-                                    Logout
-                                </span>
-                                <i class="fa-solid fa-right-from-bracket"></i>
+                            <a href="?ctrl=admin&action=ban">
+                                <i class="fa-solid fa-user-slash"></i>
+                                <span>Ban a user</span>
                             </a>
-                            <?php
-                        }
-                        else{
-                            ?>
+                            <span>|</span>
+                        <?php endif ?>
+                        <a href="?ctrl=security&action=profile">
+                            <span class="fas fa-user"></span>
+                            <span><?= App\Session::getUser() ?></span>
+                        </a>
+                        <a href="?ctrl=security&action=logout">
+                            <span>
+                                Logout
+                            </span>
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </a>
+                    <?php else : ?>       
                             <a href="?ctrl=security&action=login">Login</a>
                             <a href="?ctrl=security&action=register">Register</a>
-                        <?php
-                        }
-                    ?>
+                    <?php endif ?>
                     </div>
                 </nav>
             </header>

@@ -36,7 +36,7 @@
 
         <div class="actions">
             <button type="submit" name="submit">Create</button>
-            <a href="?ctrl=topic&action=index" class="cancel-btn">Cancel</a>
+            <a href="?ctrl=forum&action=index" class="cancel-btn">Cancel</a>
         </div>
     
     </form>

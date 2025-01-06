@@ -102,8 +102,13 @@
                                     <i class="fas fa-lock"></i>
                                     <span>Closed</span>
                                 <?php else : ?>
-                                    <i class="fas fa-lock-open"></i>
-                                    <span>Open</span>
+                                    <?php if($topic->getUser()->getId() === App\Session::getUser()->getId() && !$topic->getIsLocked()) : ?>
+                                        <i class="fas fa-lock-open lock-topic" onclick="openLockConfirmation(this)"></i>
+                                        <span>Open</span>
+                                    <?php else : ?>
+                                        <i class="fas fa-lock-open"></i>
+                                        <span>Open</span>
+                                    <?php endif ?>
                                 <?php endif ?>
                             </div>
                             <div class="comments">
@@ -111,9 +116,6 @@
                                 <span class="count"><?= $topic->getPostCount() ?></span>
                             </div>
                         </div>
-                        <?php if($topic->getUser()->getId() === App\Session::getUser()->getId() && !$topic->getIsLocked()) : ?>
-                                <i class="fa-solid fa-user-lock lock-topic" onclick="openLockConfirmation(this)"></i>
-                        <?php endif ?>
                     </div>
                 </div>
             <?php endforeach ?>

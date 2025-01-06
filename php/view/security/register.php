@@ -29,6 +29,8 @@ $title = "Register";
             <input type="password" name="confirmPassword" id="confirmPassword" required>
         </div>
     
-        <button type="submit" name="submit">Register</button>
+        <div class="actions">
+            <button type="submit" name="submit">Register</button>
+        </div>
     </form>
 </div>

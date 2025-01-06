@@ -18,7 +18,8 @@
             <label for="password">Password :</label>
             <input type="password" name="password" id="password">
         </div>
-    
-        <button type="submit" name="submit">Register</button>
+        <div class="actions">
+            <button type="submit" name="submit">Login</button>
+        </div>
     </form>
 </div>

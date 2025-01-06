@@ -140,6 +140,11 @@ final class User extends Entity{
     }
 
     public function hasRole($role){
-        return null;
+
+        if(!$this->getRoles()){
+            return false;
+        }
+        $roles = explode(',', $this->getRoles());
+        return in_array($role, $roles);
     }
 }

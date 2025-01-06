@@ -46,18 +46,26 @@
                     <button type="submit" class="submit-btn">Post</button>
                 </form>
             <?php endif; ?>
-                
-            <?php foreach($posts as $post) : ?>
+            
+            <?php if($posts) :?>
+                <?php foreach($posts as $post) : ?>
+                    <article class="post">
+                        <div class="post-header">
+                            <span class="author"><?= $post->getUsername() ?></span>
+                            <span class="date"><?= $post->getTimeDiff() ?> ago</span>
+                        </div>
+                        <div class="post-body">
+                            <?= $post->getContent() ?>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+            <?php else: ?>
                 <article class="post">
-                    <div class="post-header">
-                        <span class="author"><?= $post->getUsername() ?></span>
-                        <span class="date"><?= $post->getTimeDiff() ?> ago</span>
-                    </div>
                     <div class="post-body">
-                        <?= $post->getContent() ?>
+                        <p>This Topic has no answers yet</p>
                     </div>
                 </article>
-            <?php endforeach; ?>
+            <?php endif; ?>
         </section>
     </div>
 </div>
