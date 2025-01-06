@@ -23,11 +23,60 @@ dialog{
     transform: translate(-50%, -50%);
     border: none;
     outline: none;
-    padding: 10px;
+    padding: 30px;
     border-radius: 7px;
 
     &::backdrop{
         background-color: rgba(0, 0, 0, 0.587);
+    }
+
+    .title{
+
+        margin-bottom: 30px;
+        text-align: center;
+        
+        & > p:first-child{
+            font-size: 1.65rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        & > p:last-child{
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #666;
+        }
+
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+
+        & > button {
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 250ms;
+            color: white;
+            font-size: 1.15rem;
+            
+            &:hover{
+                outline: 2px solid black;
+            }
+        }
+
+        & > button.deny{
+            background-color: var(--flash-error);
+        }
+
+        & > button.confirm{
+            background-color: var(--flash-success);
+        }
     }
 
 }

@@ -31,9 +31,7 @@ h1 {
         font-size: 14px;
     }
 
-    & > input[type="text"],
-    & > input[type="email"],
-    & > input[type="password"] {
+    & > :is(input, textarea, select) {
         width: 100%;
         padding: 0.8rem;
         border: 1px solid #e0e0e0;
@@ -42,11 +40,21 @@ h1 {
         background-color: #f8f8f8;
         transition: border-color 0.3s ease;
 
+        &:user-invalid {
+            border-color: #ff7272;
+        }
+
         &:focus {
             outline: none;
             border-color: #4299e1;
             background-color: #fff;
         }
+    }
+
+    & > textarea {
+        resize: vertical;
+        max-height: 300px;
+        min-height: 100px;
     }
 }
 

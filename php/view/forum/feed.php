@@ -7,8 +7,13 @@
 ?>
 
 <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/feed.css">
+<script src="<?= PUBLIC_DIR ?>/js/feed.js" defer></script>
+
 
 <div class="forum-container">
+
+    <?php include('view/partials/flash.php'); ?>
+
     <div class="inner-forum">
 
         <!-- Confirmation Dialog -->
@@ -25,7 +30,7 @@
         </dialog>
 
         <div class="create-topic">
-            <a class="create-button" href="?ctrl=topic&action=showCreate">
+            <a class="create-button" href="?ctrl=topic&action=create">
                 <i class="fa-solid fa-square-plus"></i>
                 Create a topic
             </a>
@@ -116,56 +121,3 @@
         </section>
     </div>
 </div>
-
-<script>
-
-    const confirmLock = document.querySelector("#confirmLock");
-    const lockButtons = confirmLock.querySelectorAll(".actions > .button");
-    const confirmTopicId = confirmLock.querySelector("#confirmTopicId");
-
-    function setCategoryFilter(e){
-        const id = parseInt(e.value);
-        console.log(id);
-        if(id === 0){
-            window.location.replace(`${window.location.pathname}?ctrl=forum&action=index`);
-        } else {
-            window.location.replace(`${window.location.pathname}?ctrl=forum&action=showByCategory&id=${id}`);
-        }
-    }
-
-    function openLockConfirmation(e){
-        confirmTopicId.value = e.closest(".topic-card").dataset.id;
-        confirmLock.showModal();
-    }
-
-    for(const button of lockButtons){
-        button.addEventListener("click", e => {
-            const action = e.currentTarget.classList.contains("confirm") ? "confirm" : "deny";
-            const topicId = parseInt(confirmTopicId.value);
-            if(action === "deny"){
-                confirmLock.close();
-                return
-            }
-
-            const formData = new FormData();
-            formData.append("topicId", topicId);
-
-            fetch("?ctrl=topic&action=ajax", {
-                method: "POST",
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(data.error){
-                    console.error(data.error);
-                    return
-                }
-
-                window.location.reload();
-            })
-            .catch(err => console.error(err))
-            confirmLock.close();
-        })
-    }
-
-</script>
