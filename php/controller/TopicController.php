@@ -6,13 +6,66 @@ use App\ControllerInterface;
 use Model\Managers\TopicManager;
 use Model\Managers\CategoryManager;
 use App\Session;
+use Model\Managers\PostManager;
 
 class TopicController extends AbstractController implements ControllerInterface{
 
-    public function index() {
-
+    public function index(?int $id = null) {
         $this->restrictAuth();
-        return json_encode($_POST);
+
+        $topicManager = new TopicManager();
+        $postManager = new PostManager();
+        $topic = $topicManager->findTopicById($id);
+        $posts = $postManager->findPostsByTopic($id);
+
+        if(!$topic) {
+            $error = "Topic with id $id, does not exist!";
+            Session::addFlash("error", $error);
+            $this->redirectTo("forum", "index");
+            exit();
+        }
+
+        return [
+            "view" => VIEW_DIR."topics/showTopic.php",
+            "meta_description" => "Display the selected topic with all the posts related",
+            "title" => "DevForum - Topic $id",
+            "data" => [
+                "topic" => $topic,
+                "posts" => $posts
+            ]
+        ];
+    }
+
+    public function addPost(){
+        $this->restrictAuth();
+
+        if(!isset($_POST['submit']) && empty($_POST)) {
+            $this->redirectTo("forum", "index");
+            exit();
+        }
+
+        $topicId = filter_input(INPUT_POST, 'topicId', FILTER_VALIDATE_INT);
+        $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        if(!$topicId || !$content) {
+            $error = "Your answer must have a valid value!";
+            Session::addFlash("error", $error);
+            $this->redirectTo("topic", "index", $topicId);
+            exit();
+        }
+
+        $postManager = new PostManager();
+
+        $postManager->add([
+            "content" => $content,
+            "topic_id" => $topicId,
+            "user_id" => \App\Session::getUser()->getId()
+        ]);
+
+        Session::addFlash("success", "Your answer has been posted!");
+        $this->redirectTo("topic", "index", $topicId);
+        exit();
+        
     }
 
     public function create() {

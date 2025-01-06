@@ -26,6 +26,7 @@ class TopicManager extends Manager{
         SELECT 
             top.id_topic, 
             top.title, 
+            top.content,
             top.isLocked, 
             top.createdAt, 
             top.updatedAt, 
@@ -57,6 +58,14 @@ class TopicManager extends Manager{
         // la requête renvoie plusieurs enregistrements --> getMultipleResults
         return  $this->getMultipleResults(
             DAO::select($sql), 
+            $this->className
+        );
+    }
+
+    public function findTopicById(int $id, $order = null){
+        $sql = $this->getSqlRequest($order, "WHERE top.id_topic = :id");
+        return  $this->getOneOrNullResult(
+            DAO::select($sql, ["id" => $id], false),
             $this->className
         );
     }

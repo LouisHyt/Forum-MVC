@@ -10,7 +10,7 @@
     
     <?php include('view/partials/flash.php'); ?>
     
-    <form action="?ctrl=topic&action=create" method="post">
+    <form action="?ctrl=topic&action=create" method="post" style="max-width: 500px;">
 
         <div class="form-group">
             <label for="title">Title</label>
@@ -33,7 +33,11 @@
                 </select>
             <?php endif; ?>
         </div>
+
+        <div class="actions">
+            <button type="submit" name="submit">Create</button>
+            <a href="?ctrl=topic&action=index" class="cancel-btn">Cancel</a>
+        </div>
     
-        <button type="submit" name="submit">Create</button>
     </form>
 </div>
