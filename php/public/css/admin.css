@@ -1,0 +1,171 @@
+.admin-container {
+    display: grid;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.admin-title{
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+}
+
+.admin-container .inner-admin {
+    width: 1000px;
+    padding: 20px;
+}
+
+.users-list {
+    display: grid;
+    gap: 20px;
+}
+
+.user-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+
+    & > .user-info {
+        display: grid;
+        gap: 8px;
+    }
+
+    & > .user-info > .upper {
+        margin-bottom: 10px;
+
+        & > .user-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+    }
+
+    & > .user-info > .user-topics, .user-date {
+        color: #666;
+        font-size: 0.95rem;
+    }
+}
+
+.ban-button {
+    padding: 8px 20px;
+    background-color: var(--flash-error);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &.ban {
+        background-color: rgb(222, 87, 60);
+
+        &:hover {
+            background-color: rgb(192, 73, 49);
+        }
+    }
+
+    &.unban{
+        background-color: rgb(60, 222, 92);
+
+        &:hover {
+            background-color: rgb(49, 192, 87);
+        }
+    }
+}
+
+/* Gestion des catégories */
+.category-form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+.category-form-container h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.category-form {
+    display: flex;
+    gap: 10px;
+}
+
+.category-form input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.categories-list {
+    display: grid;
+    gap: 15px;
+}
+
+.category-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.category-info {
+    flex: 1;
+}
+
+.edit-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.category-name {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    flex: 1;
+}
+
+.add-button, .edit-button {
+    padding: 8px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-button:hover, .edit-button:hover {
+    background-color: rgb(38, 104, 180);
+}
+
+.delete-button {
+    padding: 8px 20px;
+    background-color: var(--flash-error);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+    background-color: rgb(192, 73, 49);
+}
+
+.no-categories {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}

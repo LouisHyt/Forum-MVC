@@ -52,4 +52,54 @@ class UserManager extends Manager{
         return $user;
         
     }
+
+    public function getAllUsers(){
+        $sql = "
+            SELECT
+                us.id_user,
+                us.username,
+                us.email,
+                us.isBanned,
+                us.createdAt,
+                COUNT(top.id_topic) AS topicCount
+            FROM user us
+            LEFT JOIN topic top ON us.id_user = top.user_id
+            GROUP BY us.id_user
+            ORDER BY us.username DESC
+        ";
+
+        return $this->getMultipleResults(
+            DAO::select($sql), 
+            $this->className
+        );
+    }
+
+    public function isUserBanned(int $id){
+        $sql = "
+            SELECT isBanned
+            FROM user
+            WHERE id_user = :id
+        ";
+        return $this->getSingleScalarResult(
+            DAO::select($sql, ['id' => $id], false)
+        );
+    }
+
+    public function banUser(int $id){
+        $sql = "
+            UPDATE user
+            SET isBanned = 1
+            WHERE id_user = :id
+        ";
+        DAO::update($sql, ['id' => $id]);
+    }
+
+    public function unBanUser(int $id){
+        $sql = "
+            UPDATE user
+            SET isBanned = 0
+            WHERE id_user = :id
+        ";
+        DAO::update($sql, ['id' => $id]);
+    }
 }

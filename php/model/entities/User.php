@@ -15,6 +15,8 @@ final class User extends Entity{
     private $isBanned;
     private $roles;
     private $password;
+    private $topicCount;
+    private $createdAt;
 
     public function __construct($data){         
         $this->hydrate($data);        
@@ -87,6 +89,27 @@ final class User extends Entity{
         return $this->roles;
     }
 
+     /**
+     * Get the value of roles
+     */ 
+    public function getTopicCount()
+    {
+        return $this->topicCount;
+    }
+
+    /**
+     * Set the value of roles
+     *
+     * @return  self
+     */ 
+    public function setTopicCount($topicCount)
+    {
+        $this->topicCount = $topicCount;
+
+        return $this;
+    }
+
+
     /**
      * Set the value of roles
      *
@@ -146,5 +169,25 @@ final class User extends Entity{
         }
         $roles = explode(',', $this->getRoles());
         return in_array($role, $roles);
+    }
+
+    /**
+     * Get the value of createdAt
+     */ 
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set the value of createdAt
+     *
+     * @return  self
+     */ 
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
     }
 }

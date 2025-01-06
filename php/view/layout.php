@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="<?= $meta_description ?>">
+        <?php if($meta_description) : ?>
+            <meta name="description" content="<?= $meta_description ?>">
+        <?php endif ?>
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,11 +27,11 @@
                     <div id="nav-right">
                     <?php if(App\Session::getUser()) : ?>
                         <?php if(App\Session::isAdmin()) : ?>
-                            <a href="?ctrl=admin&action=category">
+                            <a href="?ctrl=admin&action=manageCategory">
                                 <i class="fa-solid fa-table-cells-large"></i>
-                                <span>Add a category</span>
+                                <span>Manage categories</span>
                             </a>
-                            <a href="?ctrl=admin&action=ban">
+                            <a href="?ctrl=admin&action=banUser">
                                 <i class="fa-solid fa-user-slash"></i>
                                 <span>Ban a user</span>
                             </a>

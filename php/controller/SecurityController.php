@@ -91,6 +91,15 @@ class SecurityController extends AbstractController {
 
             try {
                 $user = $userManager->verifyCredentials($username, $password);
+
+                $isUserBanned = boolval($user->getIsBanned());
+                
+                if($isUserBanned) {
+                    Session::addFlash("error", "Your account has been banned!");
+                    $this->redirectTo("security", "login");
+                    exit();
+                }
+
                 Session::setUser($user);
                 $this->redirectTo("forum", "index");
             } catch (Exception $e) {

@@ -54,7 +54,7 @@ if($action == "ajax"){ //si l'action était ajax
 }
 else{
     ob_start();//démarre un buffer (tampon de sortie)
-    $meta_description = $result['meta_description'];
+    $meta_description = $result['meta_description'] ?? null;
     $title = $result['title'];
     $data = $result['data'] ?? null;
     /* la vue s'insère dans le buffer qui devra être vidé au milieu du layout */
