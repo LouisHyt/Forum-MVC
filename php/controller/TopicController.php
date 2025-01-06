@@ -30,7 +30,7 @@ class TopicController extends AbstractController implements ControllerInterface{
             "meta_description" => "Display the selected topic with all the posts related",
             "title" => "DevForum - Topic $id",
             "data" => [
-                "topic" => $topic,
+                "topics" => $topic,
                 "posts" => $posts
             ]
         ];
@@ -44,6 +44,7 @@ class TopicController extends AbstractController implements ControllerInterface{
             exit();
         }
 
+        
         $topicId = filter_input(INPUT_POST, 'topicId', FILTER_VALIDATE_INT);
         $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 

@@ -50,6 +50,9 @@ for(const button of lockButtons){
 
 for(const topicCard of topicCards){
     topicCard.addEventListener("click", e => {
+        if (e.target.classList.contains('lock-topic')) {
+            return;
+        }
         const topicId = topicCard.dataset.id;
         window.location.href = `?ctrl=topic&action=index&id=${topicId}`;
     })

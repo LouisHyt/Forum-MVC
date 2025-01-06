@@ -1,10 +1,9 @@
 <?php
-    $topic = $data["topic"] ?? null;
+    $topic = $data["topics"] ?? null;
+    $posts = $data["posts"] ?? null;
 ?>
 
 <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/topic.css">
-<script src="<?= PUBLIC_DIR ?>/js/emojiPicker.js" defer></script>
-<script src="<?= PUBLIC_DIR ?>/js/topic.js" defer></script>
 
 
 
@@ -23,7 +22,6 @@
                     <span class="date"><?= $topic->getTimeDiff() ?> ago</span>
                 </div>
             </div>
-            <hr />
             <div class="topic-body">
                 <?= $topic->getContent() ?>
             </div>
@@ -34,15 +32,32 @@
             
             <!-- Formulaire de création de post -->
             <?php include('view/partials/flash.php'); ?>
-            <form action="?ctrl=topic&action=addPost" method="post" class="post-form">
-                <input type="hidden" name="topicId" value="<?= $topic->getId() ?>">
-                <div class="form-group">
-                    <textarea name="content" placeholder="Your answer" id="inputResponse" required></textarea>
-                    <img src="https://img.icons8.com/?size=80&id=V67JId5JFP2H&format=png" alt="emoji picker" class="emojipicker">
+            <?php if($topic->getIsLocked()): ?>
+                <div class="locked-info">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>This topic is locked! You can't post any answer.</span>
                 </div>
-                <button type="submit" class="submit-btn">Post</button>
-            </form>
-           
+            <?php else: ?>
+                <form action="?ctrl=topic&action=addPost" method="post" class="post-form">
+                    <input type="hidden" name="topicId" value="<?= $topic->getId() ?>">
+                    <div class="form-group">
+                        <textarea name="content" placeholder="Your answer" id="inputResponse" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Post</button>
+                </form>
+            <?php endif; ?>
+                
+            <?php foreach($posts as $post) : ?>
+                <article class="post">
+                    <div class="post-header">
+                        <span class="author"><?= $post->getUsername() ?></span>
+                        <span class="date"><?= $post->getTimeDiff() ?> ago</span>
+                    </div>
+                    <div class="post-body">
+                        <?= $post->getContent() ?>
+                    </div>
+                </article>
+            <?php endforeach; ?>
         </section>
     </div>
 </div>
