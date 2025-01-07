@@ -21,19 +21,4 @@ class HomeController extends AbstractController implements ControllerInterface {
             "title" => "DevForum - Home"
         ];
     }
-        
-    public function users(){
-        $this->restrictTo("ROLE_USER");
-
-        $manager = new UserManager();
-        $users = $manager->findAll(['register_date', 'DESC']);
-
-        return [
-            "view" => VIEW_DIR."security/users.php",
-            "meta_description" => "Liste des utilisateurs du forum",
-            "data" => [ 
-                "users" => $users 
-            ]
-        ];
-    }
 }

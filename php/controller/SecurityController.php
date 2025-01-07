@@ -116,8 +116,20 @@ class SecurityController extends AbstractController {
             ];
         }
     }
+
     public function logout () {
+        $this->restrictAuth();
         Session::setUser(null);
         $this->redirectTo("home", "index");
+    }
+
+    public function profile() {
+        $this->restrictAuth();
+        
+        return [
+            "view" => VIEW_DIR."security/profile.php",
+            "meta_description" => "Profile page of the user",
+            "title" => "DevForum - User Profile"
+        ];
     }
 }

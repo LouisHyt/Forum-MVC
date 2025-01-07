@@ -11,7 +11,7 @@
         <div class="users-list">
             <?php 
             foreach($users as $user):
-                if($user->getId() !== App\Session::getUser()->getId()) :
+                if(!$user->hasRole("ROLE_ADMIN")) :
             ?>
                 <div class="user-card">
                     <div class="user-info">

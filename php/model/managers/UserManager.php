@@ -61,6 +61,7 @@ class UserManager extends Manager{
                 us.email,
                 us.isBanned,
                 us.createdAt,
+                us.roles,
                 COUNT(top.id_topic) AS topicCount
             FROM user us
             LEFT JOIN topic top ON us.id_user = top.user_id

@@ -1,0 +1,106 @@
+.profile-container {
+    display: grid;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.profile-title{
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+}
+
+.profile-container .inner-profile {
+    width: 1000px;
+    padding: 20px;
+}
+
+/* Gestion des catégories */
+.delete-form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+.delete-form-container h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.delete-form {
+    display: flex;
+    gap: 10px;
+}
+
+.delete-form input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.categories-list {
+    display: grid;
+    gap: 15px;
+}
+
+.category-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.category-info {
+    flex: 1;
+}
+
+.deleteuser-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.category-name {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    flex: 1;
+}
+
+.add-button, .edit-button {
+    padding: 8px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-button:hover, .edit-button:hover {
+    background-color: rgb(38, 104, 180);
+}
+
+.delete-button {
+    padding: 8px 20px;
+    background-color: var(--flash-error);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 1.25rem;
+}
+
+.delete-button:hover {
+    background-color: rgb(192, 73, 49);
+}
+
