@@ -9,7 +9,10 @@
         <h1 class="admin-title">Gestion des Utilisateurs</h1>
         
         <div class="users-list">
-            <?php foreach($users as $user): ?>
+            <?php 
+            foreach($users as $user):
+                if($user->getId() !== App\Session::getUser()->getId()) :
+            ?>
                 <div class="user-card">
                     <div class="user-info">
                         <div class="upper">
@@ -26,7 +29,10 @@
                         </button>
                     </form>
                 </div>
-            <?php endforeach; ?>
+            <?php
+                endif; 
+            endforeach; 
+        ?>
         </div>
     </div>
 </main>
