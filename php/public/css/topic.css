@@ -60,6 +60,11 @@
             font-weight: 600;
             color: var(--accent-color);
         }
+
+        & > span.deleted{
+            color: var(--text-discrete);
+            font-style: italic;
+        }
     }
 }
 

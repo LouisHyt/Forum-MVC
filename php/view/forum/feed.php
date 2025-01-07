@@ -1,6 +1,5 @@
 <?php
 
-    use App\Session;
     $topics = $data["topics"] ?? null;
     $categories = $data["categories"] ?? null;
     $filterType = $_GET["type"] ?? null;
@@ -102,7 +101,9 @@
                                     <i class="fas fa-lock"></i>
                                     <span>Closed</span>
                                 <?php else : ?>
-                                    <?php if($topic->getUser()->getId() === App\Session::getUser()->getId() && !$topic->getIsLocked()) : ?>
+                                    <?php 
+                                        if($topic->getUser() && $topic->getUser()->getId() === App\Session::getUser()->getId() && !$topic->getIsLocked()) : 
+                                    ?>
                                         <i class="fas fa-lock-open lock-topic" onclick="openLockConfirmation(this)"></i>
                                         <span>Open</span>
                                     <?php else : ?>

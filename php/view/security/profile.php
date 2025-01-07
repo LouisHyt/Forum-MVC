@@ -8,6 +8,7 @@
         <div class="delete-form-container">
             <h2>Delete your account</h2>
             <form action="?ctrl=security&action=deleteUser" method="post" class="deleteuser-form">
+                <input type="hidden" name="userId" value=<?= App\Session::getUser()->getId() ?>>
                 <button type="submit" class="delete-button">Delete</button>
             </form>
         </div>

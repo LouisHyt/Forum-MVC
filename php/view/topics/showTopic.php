@@ -17,7 +17,12 @@
             <div class="topic-header">
                 <h1><?= $topic->getTitle() ?></h1>
                 <div class="topic-meta">
-                    <span class="author">From <span><?= $topic->getUser()->getUsername() ?></span></span>
+                    <span class="author">
+                        From 
+                        <span class="<?= !$topic->getUser() ?  "deleted": ""?>">
+                            <?= $topic->getUser() ? $topic->getUser()->getUsername() : "deleted user"?>
+                        </span>
+                    </span>
                     <span>•</span>
                     <span class="date"><?= $topic->getTimeDiff() ?> ago</span>
                 </div>

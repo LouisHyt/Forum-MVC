@@ -30,7 +30,7 @@ class TopicManager extends Manager{
             top.isLocked, 
             top.createdAt, 
             top.updatedAt, 
-            top.user_id, 
+            top.user_id,
             top.category_id,
             COUNT(po.id_post) AS postCount,
         CASE

@@ -31,7 +31,7 @@ class PostManager extends Manager{
             CONCAT(TIMESTAMPDIFF(MINUTE, po.createdAt, NOW()), ' minute', IF(TIMESTAMPDIFF(MINUTE, po.createdAt, NOW()) > 1, 's', ''))
         END AS timeDiff
         FROM post po
-        INNER JOIN user us ON po.user_id = us.id_user
+        LEFT JOIN user us ON po.user_id = us.id_user
         INNER JOIN topic top ON po.topic_id = top.id_topic
         WHERE top.id_topic = :id
         ORDER BY po.createdAt DESC

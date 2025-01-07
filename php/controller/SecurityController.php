@@ -132,4 +132,28 @@ class SecurityController extends AbstractController {
             "title" => "DevForum - User Profile"
         ];
     }
+
+    public function deleteUser(){
+        $this->restrictAuth();
+
+        if(empty($_POST)) {
+            $this->redirectTo("home", 'index');
+            exit();
+        }
+
+        if(intval($_POST["userId"]) !== Session::getUser()->getId()){
+            $this->redirectTo("home", 'index');
+            exit();
+        }
+
+        //Delete the user from the database
+        $userManager = new UserManager();
+        $userId = Session::getUser()->getId();
+        $userManager->delete($userId);
+
+        //Logout immediately the user
+        Session::setUser(null);
+        $this->redirectTo("home", "index");
+
+    }
 }
