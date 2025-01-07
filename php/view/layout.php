@@ -57,10 +57,10 @@
             <div id="mainpage">
                 <?= $page ?>
             </div>
+
             <footer>
                 <p>&copy; <?= date_create("now")->format("Y") ?> - <a href="#">Forum rules</a> - <a href="#">Legals mentions</a></p>
             </footer>
         </div>
-        <script src="<?= PUBLIC_DIR ?>/js/script.js"></script>
     </body>
 </html>

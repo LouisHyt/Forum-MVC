@@ -16,7 +16,7 @@
 }
 
 /* Gestion des catégories */
-.delete-form-container {
+.form-container {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -24,7 +24,7 @@
     margin-bottom: 30px;
 }
 
-.delete-form-container h2 {
+.form-container h2 {
     font-size: 1.2rem;
     margin-bottom: 15px;
     color: var(--accent-color);
@@ -42,24 +42,6 @@
     border-radius: 5px;
 }
 
-.categories-list {
-    display: grid;
-    gap: 15px;
-}
-
-.category-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.category-info {
-    flex: 1;
-}
 
 .deleteuser-form {
     display: flex;
@@ -68,39 +50,69 @@
     margin-right: 15px;
 }
 
-.category-name {
-    padding: 8px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    flex: 1;
-}
-
-.add-button, .edit-button {
+button{
     padding: 8px 20px;
-    background-color: var(--accent-color);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
-}
-
-.add-button:hover, .edit-button:hover {
-    background-color: rgb(38, 104, 180);
+    font-size: 1rem;
+    
 }
 
 .delete-button {
-    padding: 8px 20px;
     background-color: var(--flash-error);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    font-size: 1.25rem;
+
+    &:hover{
+        background-color: rgb(192, 73, 49);
+    }
 }
 
-.delete-button:hover {
-    background-color: rgb(192, 73, 49);
+.success-button {
+    background-color: var(--flash-success);
+
+    &:hover{
+        background-color: rgb(39, 160, 33);
+    }
 }
+
+.options{
+    display: flex;
+    gap: 15px;
+}
+
+
+
+#themeColor{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+#themeColor::-webkit-color-swatch-wrapper {
+    padding: 0; 
+}
+#themeColor::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+.color-select{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-block: 1rem;
+    margin-bottom: calc(1rem + 15px);
+    font-size: 1.2rem;
+    
+    & > p > span {
+        font-weight: 500;
+    }
+}
+
+
 
